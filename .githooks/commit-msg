@@ -1,0 +1,26 @@
+#!/bin/sh
+# Enforces clean commit messages. Enable once per clone:
+#   git config core.hooksPath .githooks
+msg_file="$1"
+subject=$(sed -n '1p' "$msg_file")
+
+# 1. No AI attribution anywhere in the message.
+if grep -Eiq 'co-authored-by|generated with|claude-session|noreply@anthropic' "$msg_file"; then
+  echo "commit rejected: remove AI attribution or tool mentions from the message." >&2
+  exit 1
+fi
+
+# 2. Conventional Commits subject (merge and revert commits are allowed through).
+case "$subject" in
+  Merge\ *|Revert\ *) exit 0 ;;
+esac
+if ! echo "$subject" | grep -Eq '^(feat|fix|chore|docs|refactor|test|style|perf|build|ci)(\([a-z0-9-]+\))?: [a-z].{0,}$'; then
+  echo "commit rejected: subject must look like 'type(scope): summary' in lowercase imperative." >&2
+  echo "  example: feat(booking): add class schedule screen" >&2
+  exit 1
+fi
+if [ ${#subject} -gt 72 ]; then
+  echo "commit rejected: subject is ${#subject} characters; keep it to 72 or fewer." >&2
+  exit 1
+fi
+exit 0
