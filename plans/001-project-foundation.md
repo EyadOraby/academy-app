@@ -4,7 +4,7 @@ Status: approved
 Spec: `specs/001-project-foundation.md`
 
 ## Before task 1 (Eyad)
-- Choose the app identifier for `flutter create --org`, for example `com.example` giving `com.example.academy_app`. It ships to the app stores and is hard to change later. The repo is public, so a generic identifier keeps the business name out of the code.
+- App identifier: `--org com.academyapp`, giving `com.academyapp.academy_app` (decided 2026-11-12).
 - Approve the dependencies below.
 - Create a Supabase project for development and keep its Postgres connection string for your local `.env` (task 4). CI uses a throwaway Postgres container, not Supabase.
 - Install Node 24 LTS (the local Node is 23, which is end of life) and run `corepack enable` so `pnpm` is available.
@@ -28,7 +28,7 @@ Add a root `.gitignore` for OS and editor files and every `.env*` file except `.
 - Branch and PR: `chore/root-gitignore`, PR 1
 
 ### 2. Flutter scaffold and mobile CI
-Run `flutter create --org <org> --project-name academy_app --platforms ios,android apps/mobile`. Replace the counter demo with a minimal app and one smoke widget test, drop `cupertino_icons`, and add a workflow that runs `flutter analyze` and `flutter test` with Flutter 3.41.7 on every pull request.
+Run `flutter create --org com.academyapp --project-name academy_app --platforms ios,android apps/mobile`. Replace the counter demo with a minimal app and one smoke widget test, drop `cupertino_icons`, and add a workflow that runs `flutter analyze` and `flutter test` with Flutter 3.41.7 on every pull request.
 - Files: `apps/mobile/**` (generated), `.github/workflows/mobile.yml`
 - Verify: `flutter analyze` and `flutter test` pass in `apps/mobile`; the workflow passes on the PR
 - Branch and PR: `chore/mobile-scaffold`, PR 2
