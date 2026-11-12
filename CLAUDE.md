@@ -6,8 +6,8 @@ Read this file at the start of every session. Keep it short; detail lives in `do
 A martial arts academy app: a Flutter mobile app for members and a Payload CMS back-office for staff, on Supabase Postgres.
 
 ## Stack
-- Mobile: Flutter (Dart), in `apps/mobile`
-- Back-office and API: Payload CMS on Next.js (TypeScript), in `apps/admin`
+- Mobile: Flutter (Dart), in `apps/mobile`, with Riverpod for state management and go_router for routing
+- Back-office and API: Payload CMS on Next.js (TypeScript), in `apps/admin`, using pnpm
 - Database and storage: Supabase (Postgres)
 - CI: GitHub Actions
 
@@ -24,6 +24,7 @@ plans/           One task plan per spec
 ## Design constraints (always apply)
 - Theming: every colour, font and logo comes from one theme config. No hard-coded colours or fonts in widgets.
 - Locations: the academy has one location today. Model location as data, so a second one is a new record, not a code change.
+- Languages: English only for the first release, but RTL-ready. Build every layout direction-aware (start/end, never left/right), so adding an RTL language needs no layout rework.
 - Scope: build only what the current spec says. No extra features.
 
 ## How work is done
@@ -46,8 +47,3 @@ Follow `docs/workflow.md`: spec, plan, approval, implement, test, review, merge.
 Fill in once the apps are scaffolded:
 - Mobile: `flutter analyze`, `flutter test`
 - Admin: `pnpm lint`, `pnpm typecheck`, `pnpm test`
-
-## Open decisions (ask Eyad before assuming)
-- Flutter state management and routing packages
-- Package manager for `apps/admin` (pnpm assumed)
-- Languages and RTL support for the first release
