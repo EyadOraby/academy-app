@@ -4,6 +4,7 @@ Newest first. One entry per decision: date, decision, reason.
 
 | Date | Decision | Reason |
 | --- | --- | --- |
+| 2026-11-12 | App identifier `com.academyapp` (`flutter create --org`) | Generic, like the repo name, so the business name stays out of public code; fixed once the app ships to the stores |
 | 2026-11-12 | English only for the first release, with direction-aware (RTL-ready) layouts | Simplest launch; an RTL language can be added later without layout rework |
 | 2026-11-12 | pnpm for `apps/admin` | Already assumed in the commands; used by Payload's docs and templates; fast, strict installs |
 | 2026-11-12 | go_router for Flutter routing | Maintained by the Flutter team; one route table with redirects for auth state and deep links; no code generation |

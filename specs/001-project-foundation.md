@@ -1,6 +1,6 @@
 # 001 — Project foundation
 
-Status: draft
+Status: approved
 
 ## Goal
 A clean, working skeleton for both apps with theming, checks and CI in place, so every later feature starts from a reliable base. This spec also proves the workflow end to end.
